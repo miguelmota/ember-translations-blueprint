@@ -36,11 +36,6 @@ module.exports = {
         type: options.type
       });
 
-      addImportToStylesheet(entity.name, {
-        type: options.type,
-        kind: options.kind
-      });
-
       addImportToI18n(entity.name, {
         type: options.type
       });
@@ -68,11 +63,6 @@ module.exports = {
     if (!isIndex && !options.dryRun) {
       removeRouteFromRouter(entity.name, {
         type: options.type
-      });
-
-      removeImportFromStylesheet(entity.name, {
-        type: options.type,
-        kind: options.kind
       });
 
       removeImportFromI18n(entity.name, {
@@ -181,40 +171,6 @@ function addRouteToRouter(name, options) {
   }
 
   fs.writeFileSync(routerPath, newContent);
-}
-
-function addImportToStylesheet(name, options) {
-  var stylesheetPath = path.join(process.cwd(), 'app', 'styles', 'app.sass'),
-  oldContent = fs.readFileSync(stylesheetPath, 'utf-8'),
-  existence  = new RegExp("(?:[@import]+\\s*routes\/\\s*)" + name),
-  newContent;
-
-  if (existence.test(oldContent)) {
-    return;
-  }
-
-  newContent = oldContent.replace(
-    /(\/\/ @routeImports[\s\S]+)(\/\/ @endRouteImports)/,
-    "$1@import routes/" + name + EOL + "$2"
-  );
-
-  fs.writeFileSync(stylesheetPath, newContent);
-}
-
-function removeImportFromStylesheet(name, options) {
-  var stylesheetPath = path.join(process.cwd(), 'app', 'styles', 'app.sass'),
-  oldContent = fs.readFileSync(stylesheetPath, 'utf-8'),
-  existence  = new RegExp("(?:[@import]+\\s*routes\/\\s*)" + name),
-  newContent;
-
-  if (!existence.test(oldContent)) {
-    return;
-  }
-
-  var re = new RegExp("[@import]+\\s*routes\/\\s*('|\")?" + name + "('|\")?\\n?");
-  newContent = oldContent.replace(re, '');
-
-  fs.writeFileSync(stylesheetPath, newContent);
 }
 
 function addImportToI18n(name, options) {
