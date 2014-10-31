@@ -20,6 +20,10 @@ create app/translations/es/routes/dashboard/settings.js
 create tests/unit/routes/dashboard/settings-test.js
 ```
 
+# Thanks
+
+* [James Menera](https://github.com/jamesmenera)
+
 # License
 
 MIT
