@@ -36,7 +36,7 @@ module.exports = {
         type: options.type
       });
 
-      addImportToI18n(entity.name, {
+      addImportToTranslations(entity.name, {
         type: options.type
       });
     }
@@ -65,7 +65,7 @@ module.exports = {
         type: options.type
       });
 
-      removeImportFromI18n(entity.name, {
+      removeImportFromTranslations(entity.name, {
         type: options.type
       });
     }
@@ -173,7 +173,7 @@ function addRouteToRouter(name, options) {
   fs.writeFileSync(routerPath, newContent);
 }
 
-function addImportToI18n(name, options) {
+function addImportToTranslations(name, options) {
   var filePath = path.join(process.cwd(), 'app', 'translations', 'main.js'),
   oldContent = fs.readFileSync(filePath, 'utf-8'),
   existence  = new RegExp("import .*" + name, 'gi'),
@@ -203,7 +203,7 @@ function addImportToI18n(name, options) {
   fs.writeFileSync(filePath, newContent);
 }
 
-function removeImportFromI18n(name, options) {
+function removeImportFromTranslations(name, options) {
   var filePath = path.join(process.cwd(), 'app', 'translations', 'main.js'),
   oldContent = fs.readFileSync(filePath, 'utf-8'),
   existence  = new RegExp("import.*" + name + '.*', 'gi'),
