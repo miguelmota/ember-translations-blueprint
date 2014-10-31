@@ -1,6 +1,6 @@
 // @imports
-import en_base from 'acorns/translations/en/base';
-import es_base from 'acorns/translations/es/base';
+import en_base from 'app/translations/en/base';
+import es_base from 'app/translations/es/base';
 // @endImports
 
 var t = {};
