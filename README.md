@@ -1,14 +1,12 @@
 # Ember Translations Blueprint
 
-Can be used in conjuction with [Ember-I18n](https://github.com/jamesarosen/ember-i18n). Take a look at example app files.
+Can be used in conjuction with [Ember-I18n](https://github.com/jamesarosen/ember-i18n). Take a look at the example `app/` files.
 
 # Usage
 
 ```bash
 ember g route dashboard/settings
 ```
-
-Generates:
 
 ```bash
 create app/routes/dashboard/settings.js
